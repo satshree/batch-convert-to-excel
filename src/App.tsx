@@ -1,9 +1,9 @@
 import { useCallback } from "react";
-import { useDropzone } from "react-dropzone";
 import JSZip from "jszip";
 import Papa from "papaparse";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import { useDropzone } from "react-dropzone";
 
 import "./App.css";
 
@@ -33,7 +33,10 @@ function App() {
         const outputFileName = file.name.replace(/\.txt$/, ".xlsx");
         zip.file(outputFileName, excelBuffer);
       } catch (err) {
-        console.error(`Failed to process ${file.name}:`, err);
+        const errMesage = `Failed to process ${file.name}:`;
+        console.error(errMesage, err);
+
+        alert(errMesage);
       }
     }
 
